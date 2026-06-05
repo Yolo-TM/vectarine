@@ -436,6 +436,7 @@ impl BatchDraw2d {
         uniforms.add("tex", UniformValue::Sampler2D(canvas.color_texture_id()));
         let elapsed = Instant::now() - env.start_time;
         uniforms.add("iTime", UniformValue::Float(elapsed.as_secs_f32()));
+        uniforms.add("iResolution", UniformValue::Vec2([canvas.width() as f32, canvas.height() as f32]));
 
         let shader_to_use = if let Some(id) = custom_shader {
             BatchShader::Custom(id)
